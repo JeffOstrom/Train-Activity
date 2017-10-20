@@ -1,9 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
+
 <body>
+	<!--title-->
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="display-3">Anytime is Train Time</h1>
+		<p class="lead"> Choo Choo. Chee Chee. </p>
+	</div>
+	
+	<br>
+	<br>
+	<!--current employees-->
+	<div class="card">
+		<div class="card-header">
+			Current Employees
+		</div>
+		<div class="card-body">
+			<table class="table" id="employeeData">
+				<thead>
+					<tr>
+						<th>Employee Name</th>
+						<th>Role</th>
+						<th>Start Date</th>
+						<th>Months Worked</th>
+						<th>Monthly Rate($)</th>
+						<th>Months Total Billed</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>Full Name</td>
+						<td>Flunky</td>
+						<td>01/01/2010</td>
+						<td>Null</td>
+						<td>Null</td>
+						<td>Null</td>
+					</tr>
+			  </tbody>
+			</table>
+			
+		</div>
+	</div>
+
+	<br>
+	<br>
+
+	<div class="card">
+		<div class="card-header">
+			Add Employee
+		</div>
+
+		<div class="card-body">
+			<form>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Employee Names</label>
+					<input type="email" class="form-control" id="employeeName" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Role</label>
+					<input type="email" class="form-control" id="employeeRole" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Start Date</label>
+					<input type="email" class="form-control" id="employeeStart" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Monthly Rate</label>
+					<input type="email" class="form-control" id="employeeMonthlyRate" placeholder="">
+				</div>
+			</form>
+
+			<a href="#" class="btn btn-primary" id="submit">Submit</a>
+		</div>
+	</div>
+</div>
+
 
 </body>
 </html>
