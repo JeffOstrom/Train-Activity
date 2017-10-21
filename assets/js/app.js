@@ -19,3 +19,4 @@ var minutes = "";
     messagingSenderId: "119614708109"
   };
   firebase.initializeApp(config);
+  console.log(config);
