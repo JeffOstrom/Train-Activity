@@ -11,17 +11,23 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  //Time variable
+  var currentTime = moment();
+
+  setInterval(function(){
+    $("#time").html(moment(moment()).format("hh:mm:ss"));
+  }, 1000);
     
 
   //Button click capture info
   $("#submit").on("click", function(event){
   event.preventDefault();//clears the page when hit submit
-
+  //  Variables 
   var nameTrain = $("#name").val().trim();
   var destination = $("#destinationLoca").val().trim();
   var firstTrain = $("#trainTime").val().trim();
   var frequency = $("#freqMinutes").val().trim();
-
+  //database 
   var newTrain ={
 
         nameTrain: nameTrain,
@@ -35,6 +41,7 @@
   console.log(newTrain.destination);
   console.log(newTrain.firstTrain);
   console.log(newTrain.frequency);
+  
 });
 
 database.ref().on("child_added", function(childSnapshot){
@@ -45,7 +52,7 @@ database.ref().on("child_added", function(childSnapshot){
   destination = childSnapshot.val().destination;
   firstTrain = childSnapshot.val().firstTrain;
   frequency = childSnapshot.val().frequency;
-
+    //appending to display HTML 
   $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" +
   firstTrain + "</td><td>" + frequency +"</td></tr>");
 
