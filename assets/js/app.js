@@ -1,13 +1,3 @@
-console.log("test");
-
-//Global Variables List
-var name = "";
-var destination = "";
-var frequency = "";
-var next = "";
-var minutes = "";
-
-
 
 //Database global variables firebase 
   var config = {
@@ -19,4 +9,34 @@ var minutes = "";
     messagingSenderId: "119614708109"
   };
   firebase.initializeApp(config);
-  console.log(config);
+
+var database = firebase.database();
+  
+
+//Button click capture info
+$("#submit").on("click", function(event){
+event.preventDefault();//clears the page when hit submit
+
+var nameTrain = $("#name").val().trim();
+var destination = $("#destinationLoca").val().trim();
+var firstTrain = $("#trainTime").val().trim();
+var frequency = $("#freqMinutes").val().trim();
+
+var newTrain ={
+
+        nameTrain: nameTrain,
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency
+
+      };
+database.ref().push(newTrain);
+
+console.log(newTrain.nameTrain);
+console.log(newTrain.destination);
+console.log(newTrain.firstTrain);
+console.log(newTrain.frequency);
+
+
+
+  });
