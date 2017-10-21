@@ -10,33 +10,44 @@
   };
   firebase.initializeApp(config);
 
-var database = firebase.database();
-  
+  var database = firebase.database();
+    
 
-//Button click capture info
-$("#submit").on("click", function(event){
-event.preventDefault();//clears the page when hit submit
+  //Button click capture info
+  $("#submit").on("click", function(event){
+  event.preventDefault();//clears the page when hit submit
 
-var nameTrain = $("#name").val().trim();
-var destination = $("#destinationLoca").val().trim();
-var firstTrain = $("#trainTime").val().trim();
-var frequency = $("#freqMinutes").val().trim();
+  var nameTrain = $("#name").val().trim();
+  var destination = $("#destinationLoca").val().trim();
+  var firstTrain = $("#trainTime").val().trim();
+  var frequency = $("#freqMinutes").val().trim();
 
-var newTrain ={
+  var newTrain ={
 
         nameTrain: nameTrain,
         destination: destination,
         firstTrain: firstTrain,
         frequency: frequency
-
       };
-database.ref().push(newTrain);
+  database.ref().push(newTrain);
 
-console.log(newTrain.nameTrain);
-console.log(newTrain.destination);
-console.log(newTrain.firstTrain);
-console.log(newTrain.frequency);
+  console.log(newTrain.nameTrain);
+  console.log(newTrain.destination);
+  console.log(newTrain.firstTrain);
+  console.log(newTrain.frequency);
+});
+
+database.ref().on("child_added", function(childSnapshot){
+
+  console.log(childSnapshot.val());
+
+  nameTrain = childSnapshot.val().nameTrain;
+  destination = childSnapshot.val().destination;
+  firstTrain = childSnapshot.val().firstTrain;
+  frequency = childSnapshot.val().frequency;
+
+  $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" +
+  firstTrain + "</td><td>" + frequency +"</td></tr>");
 
 
-
-  });
+});
