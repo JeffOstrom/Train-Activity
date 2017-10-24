@@ -1,4 +1,3 @@
-
 //Database global variables firebase 
   var config = {
     apiKey: "AIzaSyAMVx3-K9zSm48921bWhMimOk1zqwsfRcM",
@@ -11,6 +10,8 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  
+
   //Time variable
   var currentTime = moment();
 
@@ -34,7 +35,8 @@
         destination: destination,
         firstTrain: firstTrain,
         frequency: frequency
-      };
+  };
+  
   database.ref().push(newTrain);
 
   console.log(newTrain.nameTrain);
@@ -42,17 +44,26 @@
   console.log(newTrain.firstTrain);
   console.log(newTrain.frequency);
   
-});
+  });
+  //creating firebase event 
+  database.ref().on("child_added", function(childSnapshot){
 
-database.ref().on("child_added", function(childSnapshot){
+   
 
-  console.log(childSnapshot.val());
 
-  nameTrain = childSnapshot.val().nameTrain;
-  destination = childSnapshot.val().destination;
-  firstTrain = childSnapshot.val().firstTrain;
-  frequency = childSnapshot.val().frequency;
-    //appending to display HTML 
+
+
+ 
+
+
+
+  
+
+    nameTrain = childSnapshot.val().nameTrain;
+    destination = childSnapshot.val().destination;
+    firstTrain = childSnapshot.val().firstTrain;
+    frequency = childSnapshot.val().frequency;
+      //appending to display HTML 
   $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" +
   firstTrain + "</td><td>" + frequency +"</td></tr>");
 
