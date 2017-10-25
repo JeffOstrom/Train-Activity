@@ -55,6 +55,7 @@
   console.log("Time " + timeDiff);
   
   var remainder = timeDiff % frequency;
+  console.log(remainder);
 
   var nextTrainMinutes = frequency - remainder;
 
