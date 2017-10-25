@@ -48,24 +48,27 @@
   //creating firebase event 
   database.ref().on("child_added", function(childSnapshot){
 
-   
+  //Calculations
+  var firstTimeConverted = moment(firstTimeConverted, "hh: :mm").subtract(1, "days");
 
-
-
-
- 
-
-
-
+  var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("Time " + timeDiff);
   
+  var remainder = timeDiff % frequency;
 
-    nameTrain = childSnapshot.val().nameTrain;
-    destination = childSnapshot.val().destination;
-    firstTrain = childSnapshot.val().firstTrain;
-    frequency = childSnapshot.val().frequency;
-      //appending to display HTML 
-  $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" +
-  firstTrain + "</td><td>" + frequency +"</td></tr>");
+  var nextTrainMinutes = frequency - remainder;
+
+  // finds time until next train
+  var nextTrainTime = moment().add(nextTrainMinutes, "minutes");
+
+
+   var nameTrain = childSnapshot.val().nameTrain;
+   var destination = childSnapshot.val().destination;
+   var firstTrain = childSnapshot.val().firstTrain;
+   var frequency = childSnapshot.val().frequency;
+      
+  //appending to display HTML 
+  $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + frequency  + "</td></tr>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
 
 
 });
