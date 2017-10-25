@@ -14,7 +14,7 @@
 
   //Time variable
   var currentTime = moment();
-
+  //Displays current time
   setInterval(function(){
     $("#time").html(moment(moment()).format("hh:mm:ss"));
   }, 1000);
@@ -27,7 +27,7 @@
   var nameTrain = $("#name").val().trim();
   var destination = $("#destinationLoca").val().trim();
   var firstTrain = $("#trainTime").val().trim();
-  var frequency = $("#freqMinutes").val().trim();
+  var frequency = parseInt($("#freqMinutes").val());
   //database 
   var newTrain ={
 
@@ -39,38 +39,30 @@
   
   database.ref().push(newTrain);
 
-  console.log(newTrain.nameTrain);
-  console.log(newTrain.destination);
-  console.log(newTrain.firstTrain);
-  console.log(newTrain.frequency);
   
   });
   //creating firebase event 
   database.ref().on("child_added", function(childSnapshot){
 
-  //Calculations
-  var firstTimeConverted = moment(firstTimeConverted, "hh: :mm").subtract(1, "days");
+   //Calculations
+  var firstTimeConverted = moment(childSnapshot.val().firstTrain, "hh:mm");
 
-  var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
+  var currentTime = moment(); //current time
+
+  var timeDiff = currentTime.diff(firstTimeConverted, "minutes");
   console.log("Time " + timeDiff);
   
-  var remainder = timeDiff % frequency;
+  var remainder = timeDiff % childSnapshot.val().frequency;
   
 
-  var nextTrainMinutes = frequency - remainder;
+  var nextTrainMinutes = childSnapshot.val().frequency - remainder;
+  console.log(nextTrainMinutes)
 
   // finds time until next train
-  var nextTrainTime = moment().add(nextTrainMinutes, "minutes");
-
-
-   var nameTrain = childSnapshot.val().nameTrain;
-   var destination = childSnapshot.val().destination;
-   var firstTrain = childSnapshot.val().firstTrain;
-   var frequency = childSnapshot.val().frequency;
+  var nextTrainTime = currentTime.add(nextTrainMinutes, "minutes");
       
 
   //appending to display HTML 
-  $("#employeeData").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
-
+  $("#employeeData").append("<tr><td>" + childSnapshot.val().nameTrain + "</td><td>" + childSnapshot.val().destination  + "</td><td>"+ childSnapshot.val().frequency + "</td><td>" + nextTrainTime.format("hh:mm") + "</td><td>" + nextTrainMinutes + "</td></tr>");
 
 });
