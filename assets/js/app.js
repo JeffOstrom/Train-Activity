@@ -55,7 +55,7 @@
   console.log("Time " + timeDiff);
   
   var remainder = timeDiff % frequency;
-  console.log(remainder);
+  
 
   var nextTrainMinutes = frequency - remainder;
 
@@ -68,8 +68,9 @@
    var firstTrain = childSnapshot.val().firstTrain;
    var frequency = childSnapshot.val().frequency;
       
+
   //appending to display HTML 
-  $("#employeeData").append("<tr><td>" + nameTrain + "<td></tr>" + destination  + "</td></tr>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
+  $("#employeeData").append("<tr><td>" + nameTrain + "</td><td>" + destination  + "</td><td>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
 
 
 });
