@@ -69,7 +69,7 @@
    var frequency = childSnapshot.val().frequency;
       
   //appending to display HTML 
-  $("#tabbody").append("<tr><td>" + nameTrain + "</td><td>" + frequency  + "</td></tr>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
+  $("#employeeData").append("<tr><td>" + nameTrain + "<td></tr>" + destination  + "</td></tr>" + moment(nextTrainTime).format("hh:mm") + "</td></tr>" + nextTrainMinutes + "</td></tr>");
 
 
 });
