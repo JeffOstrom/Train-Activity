@@ -1,21 +1,49 @@
-# Train-Activity
+Synopsis
+-------------------------------------------------------------------------------------
+- Welcome to the train schedule finder. The train app will provide up-to-date information about various trains, namely their arrival times 
+  and how many minutes remain until they arrive at their station.  
 
-https://jeffostrom.github.io/Train-Activity/.
+- Step one is to enter the information you wish to receive Train Name, Destination, Time, Frequency(minutes).
 
-Firebase/jQuery/Bootstrap-4.0v
+- Next step is to click submit to display your information on the top train schedule. 
 
-Overview:
+- The train schedule will post the next available trian. 
 
-Create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
+- Find your next train ride here! https://jeffostrom.github.io/Train-Activity/.
 
-App design: 
+Built With
+-------------------------------------------------------------------------------------
 
-- Make sure that your app suits this basic spec:
-- When adding trains, administrators should be able to submit the following:
-  Train Name
-- Destination
-- First Train Time -- in military time
-- Frequency -- in minutes
-- Code this app to calculate when the next train will arrive; this should be  
-  relative to the current time.
-- Users from many different machines must be able to view same train times.
+- Firebase
+
+- jQuery
+
+- Bootstrap-4.0v
+
+- Javascript
+
+- Moment.js
+
+Resources
+-------------------------------------------------------------------------------------
+
+- None
+
+API
+-------------------------------------------------------------------------------------
+
+- None 
+
+Contributors
+-------------------------------------------------------------------------------------
+
+- Jeffrey Ostrom
+
+License
+-------------------------------------------------------------------------------------
+
+- None
+
+Acknowledgments
+-------------------------------------------------------------------------------------
+- Photo by Callum Chapman on Unsplash
