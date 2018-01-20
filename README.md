@@ -9,7 +9,7 @@ Synopsis
 
 - The train schedule will post the next available trian. 
 
-- Find your next train ride here! https://jeffostrom.github.io/Train-Activity/.
+- Find your next train ride here! "https://jeffostrom.github.io/Train-Finder/".
 
 Built With
 -------------------------------------------------------------------------------------
